@@ -1,21 +1,32 @@
 package com.myTwitter.test;
 
-import org.junit.jupiter.api.Test;
+import com.myTwitter.dto.TweetDto;
+import com.myTwitter.services.TweetService;
+import com.myTwitter.services.TweetServiceImpl;
+import org.junit.Assert;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
 
 /**
  * Created by Grzesiek on 2018-09-30
  */
 class TweetServiceImplTest {
 
-    //@org.junit.jupiter.api.Test
+    private TweetService tweetService = new TweetServiceImpl();
+
     @Test
-    void findById() {
+    void shouldFindTweetById() {
+        tweetService.findById(1);
     }
 
     //@org.junit.jupiter.api.Test
     @Test
-    void findAll() {
+    void shouldFindAllTweets() {
+        //WHEN
+        List<TweetDto> tweets = tweetService.findAll();
+        //THEN
+        Assert.assertEquals(3, tweets.size());
     }
 }

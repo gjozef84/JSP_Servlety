@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * Created by Grzesiek on 2018-09-30
  */
 //@Setter
-//@Getter
+@Getter
 @AllArgsConstructor
 public class TweetDto {
 
