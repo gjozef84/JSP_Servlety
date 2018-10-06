@@ -4,17 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
  * Created by Grzesiek on 2018-09-30
  */
 //@Setter
-@Getter
+//@Getter
 @AllArgsConstructor
 public class TweetDto {
 
-    private int id;
+    private Integer id;
 
     private String author;
 
@@ -22,6 +23,25 @@ public class TweetDto {
 
     private String body;
 
-    private LocalDateTime createdDate;
+    private LocalDate createdDate;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
 }

@@ -12,25 +12,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Optional;
 
 /**
  * Created by Grzesiek on 2018-09-30
  */
-@WebServlet(name = "TweetServlet", value = "/tweet")
+@WebServlet(name = "TweetServlet", value = "/tweet/servlet")
 public class TweetServlet extends HttpServlet {
 
     private TweetService tweetService = new TweetServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id"); //pobieramy parametr z url, tj. z GET
         TweetDto tweetDto = null;
+        Optional<TweetDto> tweetDtoOptional = null;
 
         try {
-            tweetDto = tweetService.findById(Integer.parseInt(id));
+            tweetDtoOptional = tweetService.findById(Integer.parseInt(id));
 
         } catch (NumberFormatException ex) {
             System.out.println("Tweet od should be number");
@@ -38,7 +40,9 @@ public class TweetServlet extends HttpServlet {
 
         ServletOutputStream outputStream = response.getOutputStream();
 
-        if (tweetDto != null) {
+        if (tweetDtoOptional.isPresent()) {
+            tweetDto = tweetDtoOptional.get();
+
             outputStream.println("<html>");
             outputStream.print("<form action=\"/addTweet\"method=\"GET\">\n" +
                     "Tweet title: <input type=\"text\" name=\"title\" value=\"" + tweetDto.getTitle() + "\"><br>\n" +

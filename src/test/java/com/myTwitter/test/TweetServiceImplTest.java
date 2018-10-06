@@ -12,18 +12,18 @@ import java.util.List;
 /**
  * Created by Grzesiek on 2018-09-30
  */
-class TweetServiceImplTest {
+public class TweetServiceImplTest {
 
     private TweetService tweetService = new TweetServiceImpl();
 
     @Test
-    void shouldFindTweetById() {
+    public void shouldFindTweetById() {
         tweetService.findById(1);
     }
 
     //@org.junit.jupiter.api.Test
     @Test
-    void shouldFindAllTweets() {
+    public void shouldFindAllTweets() {
         //WHEN
         List<TweetDto> tweets = tweetService.findAll();
         //THEN
