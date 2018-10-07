@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -28,9 +29,12 @@ public class TweetSaveController extends HttpServlet {
 
         String title = request.getParameter("title");
         String message = request.getParameter("message");
+        HttpSession session = request.getSession();
+        String author = (String) session.getAttribute("login");
         String id = request.getParameter("id");
 
 
+        //TweetDto tweetDto = tweeterDtoFactory.getTweetDto(id, title, message);
         TweetDto tweetDto = tweeterDtoFactory.getTweetDto(id, title, message);
         tweetService.save(tweetDto);
 

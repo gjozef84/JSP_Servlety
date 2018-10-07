@@ -47,12 +47,21 @@
                 <a href="/tweet/create">Add tweet</a>
             </li>
 
-
-
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <c:if test="${not empty sessionScope.login}">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hi ${sessionScope.login}!</a></li>
+            </c:if>
+            <c:if test="${empty sessionScope.login}">
+                <li><a href="/signUp"><span class="glyphicon glyphicon-user"></span> Sing up</a></li>
+            </c:if>
+
+            <c:if test="${empty sessionScope.login}">
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </c:if>
+            <c:if test="${not empty sessionScope.login}">
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </c:if>
         </ul>
     </div>
 </nav>
