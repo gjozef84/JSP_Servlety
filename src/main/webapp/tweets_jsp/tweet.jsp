@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Grzesiek
@@ -19,14 +20,18 @@
 <body>
 
 <div class="container">
-    <jsp:include page="/tweets_jsp/menu.jsp"></jsp:include>
+    <jsp:include page="/tweets_jsp/menu.jsp">
+        <jsp:param name="activeTab" value="tweet"></jsp:param>
+    </jsp:include>
 
-    <h2>Tweet edit form</h2>
-    <form class="form-horizontal" action="/tweet/addTweet" method="POST">
+    <h2>${h2Text}</h2>
+    <form class="form-horizontal" action="/tweet/save" method="POST">
 
+        <c:if test="${not empty tweetModel.id}">
         <div class="form-group">
             <label class="control-label col-sm-2">Id: ${tweetModel.id}</label>
         </div>
+        </c:if>
 
         <div class="form-group">
             <label class="control-label col-sm-2" for="title">Title:</label>
@@ -54,13 +59,13 @@
                 <input type="date" class="form-control" id="data" placeholder="Enter data" name="data" value="${tweetModel.createdDate}">
             </div>
         </div>
-        <div class="form-group">
+        <%--<div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label><input type="checkbox" name="remember"> Remember me</label>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default">Save</button>

@@ -14,5 +14,6 @@ public interface TweetService {
     List<TweetDto> findAll();
 
     void addNewTweetToMap(TweetDto tweetDto);
+    void save(TweetDto tweetDto);
 
 }

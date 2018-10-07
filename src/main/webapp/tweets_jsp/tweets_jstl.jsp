@@ -20,7 +20,9 @@
 <body>
 
 <div class="container">
-    <jsp:include page="/tweets_jsp/menu.jsp"></jsp:include>
+    <jsp:include page="/tweets_jsp/menu.jsp">
+        <jsp:param name="activeTab" value="tweets"></jsp:param>
+    </jsp:include>
 
         <h2>List of tweets:</h2>
 

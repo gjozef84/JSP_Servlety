@@ -41,4 +41,9 @@ public class TweetServiceImpl implements TweetService {
     public List<TweetDto> findAll() {
         return new ArrayList<TweetDto>(tweetDtoMap.values());
     }
+
+    @Override
+    public void save(TweetDto tweetDto) {
+
+    }
 }

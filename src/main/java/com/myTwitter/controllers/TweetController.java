@@ -22,7 +22,7 @@ public class TweetController extends HttpServlet {
     private TweetService tweetService = new TweetServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +40,10 @@ public class TweetController extends HttpServlet {
             request.setAttribute("tweetModel", tweetDto.get());
         }
 
+        request.setAttribute("h2Text", "Tweet preview:");
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/tweets_jsp/tweet.jsp");
+
         requestDispatcher.forward(request, response);
     }
 }
